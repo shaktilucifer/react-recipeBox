@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-var RecipeName = React.createClass({
+var Ingredients = React.createClass({
     render(){
         return (
         <div>
-        {this.props.recipeName}
+        {this.props.ingredients}
         </div>);
     }
 
 });
 
-module.exports = RecipeName;
+module.exports = Ingredients;
+
+
