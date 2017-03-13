@@ -8,7 +8,7 @@ var Ingredients = React.createClass({
     // },
     render(){
         return (
-        <div className="">
+        <div className="hide">
         {this.props.ingredients.map(function(title) {
             return <li key={title}>{title}</li>;
           })}            
