@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 var RecipeName = React.createClass({
-    handleEvent(e){
+    handleEvent(e) {
         console.log(e.target.val);
     },
-    render(){
+    render() {
         return (
-        <div onClick={this.handleEvent}>
-        {this.props.recipeName}
-        </div>);
+            <div onClick={this.handleEvent}>
+                {this.props.recipeName}
+            </div>);
     }
 
 });
