@@ -2,13 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 var Ingredients = React.createClass({
-    
-    // createList(){
-    //      s = {this.props.Ingredients};
-    // },
+
     render(){
+        var showHideIngredients = this.props.showIngredient ?"":"hide";
+        console.log(showHideIngredients);
         return (
-        <div className="hide">
+        <div className={showHideIngredients}>
         {this.props.ingredients.map(function(title) {
             return <li key={title}>{title}</li>;
           })}            

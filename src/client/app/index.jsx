@@ -22,22 +22,37 @@ let recipeJson = {
     id: 3
   }]
 };
-const recipeList = recipeJson.recipes.map((recipename) =>
+/*const recipeList = recipeJson.recipes.map((recipename) =>
   <div>
     <RecipeName recipeName={recipename.recipeName} key={recipename.recipeName} />
-    <Ingredients ingredients={recipename.ingredients} key={recipename.id} />
+    <Ingredients showIngredient={this.state.showIngredient} ingredients={recipename.ingredients} key={recipename.id} />
   </div>
-);
+);*/
 class App extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      showIngredient : false
+    }
+  }
+  showIngredients(){
+    console.log("clicked Recipe");
+  }
   addRecipe(){
     console.log("clicked add");
   }
   render() {
+    const recipeList = recipeJson.recipes.map((recipename) =>
+  <div>
+    <RecipeName recipeName={recipename.recipeName} key={recipename.recipeName} />
+    <Ingredients showIngredient={this.state.showIngredient} ingredients={recipename.ingredients} key={recipename.id} />
+  </div>
+);
 
     return (
       <div>
         {recipeList}
-            <Button name="Add" onClick={this.addRecipe}/>
+    <Button name="Add" onClick={this.addRecipe}/>
       </div>
     );
   }
