@@ -31,12 +31,18 @@ let recipeJson = {
 class App extends React.Component {
   constructor() {
     super();
+    this.showIngredients = this.showIngredients.bind(this);
+    this.addRecipe = this.addRecipe.bind(this);
+
     this.state = {
       showIngredient: false
     }
   }
   showIngredients() {
-    console.log("clicked Recipe");
+    let showIng = this.state.showIngredient ? false:true;
+    this.setState({
+      showIngredient: showIng
+    })
   }
   addRecipe() {
     console.log("clicked add");
@@ -44,12 +50,13 @@ class App extends React.Component {
   render() {
     const recipeList = recipeJson.recipes.map((recipename) =>
       <div>
-        <RecipeName recipeName={recipename.recipeName} key={recipename.recipeName} />
+        <RecipeName recipeName={recipename.recipeName} onClick={this.showIngredients} key={recipename.recipeName} />
         <Ingredients showIngredient={this.state.showIngredient} ingredients={recipename.ingredients} key={recipename.id} />
       </div>
     );
-
+    console.log("rendering");
     return (
+
       <div>
         {recipeList}
         <Button name="Add" onClick={this.addRecipe} />
