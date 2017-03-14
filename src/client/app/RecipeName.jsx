@@ -1,13 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 var RecipeName = React.createClass({
-
     render() {
+        console.log(this.state.showHideIng);
         return (
-            <div onClick={this.props.onClick}>
+        <div>
+            <div onClick={this.onClick}>
                 {this.props.recipeName}
-            </div>);
+            </div>
+            <Ingredients
+                showIngredient={this.state.showHideIng} />
+        </div>
+        );
+
     }
 
 });

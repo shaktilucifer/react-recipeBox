@@ -3,43 +3,21 @@ import { render } from 'react-dom';
 let RecipeName = require('./RecipeName.jsx');
 let Ingredients = require('./Ingredients.jsx');
 let Button = require('./Button.jsx');
+let recipeJson = require('./defaultRecipes');
 
-// import RecipeName from 'RecipeName';
-let recipeJson = {
-  recipes: [{
-    recipeName: "Olio Aglio",
-    ingredients: ["Pasta", "Oil", "Garlic"],
-    id: 1
-  },
-  {
-    recipeName: "Bread",
-    ingredients: ["Flour", "Yeast", "Salt", "Sugar"],
-    id: 2
-  },
-  {
-    recipeName: "Pesto",
-    ingredients: ["Basil", "Pine Nuts", "Garlic"],
-    id: 3
-  }]
-};
-/*const recipeList = recipeJson.recipes.map((recipename) =>
-  <div>
-    <RecipeName recipeName={recipename.recipeName} key={recipename.recipeName} />
-    <Ingredients showIngredient={this.state.showIngredient} ingredients={recipename.ingredients} key={recipename.id} />
-  </div>
-);*/
 class App extends React.Component {
   constructor() {
     super();
+
     this.showIngredients = this.showIngredients.bind(this);
     this.addRecipe = this.addRecipe.bind(this);
-
-    this.state = {
-      showIngredient: false
-    }
+    console.log(recipeJson.recipes)
+    let recipes = recipeJson.recipes;
+  
   }
-  showIngredients() {
-    let showIng = this.state.showIngredient ? false:true;
+  showIngredients(e) {
+    console.log(this);
+    let showIng = this.state.showIngredient ? false : true;
     this.setState({
       showIngredient: showIng
     })
@@ -50,14 +28,17 @@ class App extends React.Component {
   render() {
     const recipeList = recipeJson.recipes.map((recipename) =>
       <div>
-        <RecipeName recipeName={recipename.recipeName} onClick={this.showIngredients} key={recipename.recipeName} />
-        <Ingredients showIngredient={this.state.showIngredient} ingredients={recipename.ingredients} key={recipename.id} />
+        <RecipeName
+          recipeName={recipename.recipeName}
+          onClick={this.showIngredients}
+          ingredients={recipename.ingredients}
+          showHideIng={this.state.recipename.id}
+          key={recipename.id} />
       </div>
     );
     console.log("rendering");
     return (
-
-      <div>
+      <div className="container">
         {recipeList}
         <Button name="Add" onClick={this.addRecipe} />
       </div>
