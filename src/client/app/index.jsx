@@ -2,6 +2,8 @@ import React from 'react';
 import { render } from 'react-dom';
 let RecipeName = require('./RecipeName.jsx');
 let Ingredients = require('./Ingredients.jsx');
+let Button = require('./Button.jsx');
+
 // import RecipeName from 'RecipeName';
 let recipeJson = {
   recipes: [{
@@ -27,16 +29,18 @@ const recipeList = recipeJson.recipes.map((recipename) =>
   </div>
 );
 class App extends React.Component {
-
+  addRecipe(){
+    console.log("clicked add");
+  }
   render() {
 
     return (
       <div>
         {recipeList}
+            <Button name="Add" onClick={this.addRecipe}/>
       </div>
     );
   }
 }
-
 
 render(<App />, document.getElementById('app'));
