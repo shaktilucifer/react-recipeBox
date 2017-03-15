@@ -4,10 +4,10 @@ let RecipeName = require('./RecipeName.jsx');
 let Button = require('./Button.jsx');
 let recipeJson = require('./defaultRecipes');
 
+
 class App extends React.Component {
   constructor() {
     super();
-
     this.addRecipe = this.addRecipe.bind(this);
     // console.log(recipeJson.recipes)
     let recipes = recipeJson.recipes;
@@ -30,7 +30,7 @@ class App extends React.Component {
     return (
       <div className="container">
         {recipeList}
-        <Button name="Add" onClick={this.addRecipe} />
+        <Button />
       </div>
     );
   }
