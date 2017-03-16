@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 let RecipeName = require('./RecipeName.jsx');
 let Button = require('./Button.jsx');
 let recipeJson = require('./defaultRecipes');
@@ -31,7 +32,9 @@ class App extends React.Component {
         <ul className="collapsible popout" data-collapsible="accordion">
           {recipeList}
         </ul>
-        <Button />
+        <MuiThemeProvider>
+          <Button />
+        </MuiThemeProvider>
       </div>
     );
   }
