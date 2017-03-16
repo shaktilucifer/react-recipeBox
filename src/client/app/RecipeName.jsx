@@ -2,7 +2,7 @@ import React from 'react';
 let Ingredients = require('./Ingredients.jsx');
 
 var RecipeName = React.createClass({
-    getInitialState(){
+    getInitialState() {
         return {
             showIngredient: false
         }
@@ -15,14 +15,14 @@ var RecipeName = React.createClass({
     },
     render() {
         return (
-            <div>
-                <div onClick={this.showIngredients}>
+            <li>
+                <div className="collapsible-header" onClick={this.showIngredients}>
                     {this.props.recipeName}
                 </div>
                 <Ingredients
                     ingredients={this.props.ingredients}
                     showIngredient={this.state.showIngredient} />
-            </div>
+            </li>
         );
 
     }
