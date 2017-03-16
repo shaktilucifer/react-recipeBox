@@ -1,9 +1,7 @@
 import React from 'react';
-var $ = require ('jquery')
 var Button = React.createClass({
   createRecipe(e) {
-  let id = e.target.parentNode.nextSibling.id;
-  	$('#' + id).modal('show');
+  
   },
   render() {
     return (
