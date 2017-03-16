@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack -d --watch",
+    "dev": "./node_modules/.bin/webpack-dev-server --content-base src/client --inline --hot",
     "build": "webpack -p"
   },
   "author": "",
@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
-    "materialize-css": "^0.98.0"
+    "materialize-css": "^0.98.0",
+    "webpack-dev-server": "^2.4.2"
   }
 }
