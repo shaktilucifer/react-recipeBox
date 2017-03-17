@@ -10,7 +10,9 @@ var Button = React.createClass({
     return (
       <FloatingActionButton mini={true}>
         <ContentAdd />
-      </FloatingActionButton>)
+      </FloatingActionButton>
+      
+      )
   }
 
 });

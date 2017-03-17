@@ -1,9 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 let RecipeName = require('./RecipeName.jsx');
 let Button = require('./Button.jsx');
 let recipeJson = require('./defaultRecipes');
+let DialogExampleSimple = require('./AddRecipeModal.jsx')
 
 
 
@@ -11,7 +13,6 @@ class App extends React.Component {
   constructor() {
     super();
     this.addRecipe = this.addRecipe.bind(this);
-    // console.log(recipeJson.recipes)
     let recipes = recipeJson.recipes;
 
   }
@@ -35,6 +36,11 @@ class App extends React.Component {
         <MuiThemeProvider>
           <Button />
         </MuiThemeProvider>
+                <MuiThemeProvider>
+
+                  <DialogExampleSimple />
+                  </MuiThemeProvider>
+
       </div>
     );
   }
