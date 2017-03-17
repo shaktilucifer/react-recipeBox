@@ -13,13 +13,24 @@ class App extends React.Component {
   constructor() {
     super();
     this.addRecipe = this.addRecipe.bind(this);
+    this.handleModalOpenClose = this.handleModalOpenClose.bind(this);
     let recipes = recipeJson.recipes;
+    this.state ={
+      open: false
+    }
 
   }
   addRecipe() {
     console.log("clicked add");
   }
+  handleModalOpenClose(){
+    let isModalOpen = this.state.open ? false : true;
+    
+        this.setState({open: isModalOpen});
+
+  }
   render() {
+    console.log(this.state);
     const recipeList = recipeJson.recipes.map((recipename) =>
       <RecipeName
         recipeName={recipename.recipeName}
@@ -34,12 +45,11 @@ class App extends React.Component {
           {recipeList}
         </ul>
         <MuiThemeProvider>
-          <Button />
+          <Button onClick={this.handleModalOpenClose}/>
         </MuiThemeProvider>
-                <MuiThemeProvider>
-
-                  <DialogExampleSimple />
-                  </MuiThemeProvider>
+        <MuiThemeProvider>
+          <DialogExampleSimple open={this.state.open} />
+        </MuiThemeProvider>
 
       </div>
     );

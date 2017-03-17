@@ -32,15 +32,14 @@ return this.state = {
         onClick={this.handleClose}
       />,
     ];
-
+    let isModalOpen = this.props.open;
     return (
       <div>
-        <RaisedButton label="Dialog" onClick={this.handleOpen} />
         <Dialog
           title="Dialog With Actions"
           modal={false}
           actions={actions}
-          open={this.state.open}
+          open={isModalOpen}
           onRequestClose={this.handleClose}
         >
           The actions in this window were passed in as an array of React objects.

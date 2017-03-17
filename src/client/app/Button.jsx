@@ -8,7 +8,7 @@ var Button = React.createClass({
   },
   render() {
     return (
-      <FloatingActionButton mini={true}>
+      <FloatingActionButton mini={true} onClick={this.props.onClick}>
         <ContentAdd />
       </FloatingActionButton>
       
