@@ -37,6 +37,7 @@ class App extends React.Component {
         <MuiThemeProvider>
           <AddRecipeModal
            onClose ={this.addRecipe}
+           key="21393752783"
            />
         </MuiThemeProvider>
       </div>

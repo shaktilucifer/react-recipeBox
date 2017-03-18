@@ -11,6 +11,8 @@ var AddRecipeModal = React.createClass({
   getInitialState() {
     return this.state = {
       open: false,
+      recipeNameText: '',
+      ingredientText: ''
     };
   },
   handleOpen() {
@@ -18,8 +20,14 @@ var AddRecipeModal = React.createClass({
   },
 
   handleClose(e) {
+    console.log()
     this.props.onClose();
     this.setState({ open: false });
+  },
+  handleChange(e){
+    let stateObj ={};
+    stateObj[e.target.name] = e.target.value;
+    this.setState(stateObj);
   },
 
   render() {
@@ -38,9 +46,19 @@ var AddRecipeModal = React.createClass({
     ];
     const AddRecipeForm = () => (
       <div>
-        <TextField hintText="Recipe Name" floatingLabelText="Recipe Name" />
+        <TextField 
+        hintText="Recipe Name" 
+        name="recipeNameText" 
+        value={this.state.recipeNameText} 
+        onChange = {this.handleChange} 
+        floatingLabelText="Recipe Name" />
         <Divider />
-        <TextField hintText="Ingredients" floatingLabelText="Ingredients" />
+        <TextField 
+        hintText="Ingredients" 
+        name="ingredientText" 
+        value={this.state.ingredientText}
+        onChange = {this.handleChange} 
+        floatingLabelText="Ingredients" />
         <Divider />
       </div>
     );
@@ -53,8 +71,9 @@ var AddRecipeModal = React.createClass({
           actions={actions}
           open={this.state.open}
           onRequestClose={this.handleClose}
+          key="234948737"
         >
-          <AddRecipeForm />
+          <AddRecipeForm key="114948737"/>
         </Dialog>
       </div>
     );
