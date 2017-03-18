@@ -11,7 +11,7 @@ git clone https://github.com/shaktilucifer/react-recipeBox.git
 cd react-recipeBox
 
 # Run the build
-npm build
+npm run build
 
 # Run webpack-server
 npm run dev 
