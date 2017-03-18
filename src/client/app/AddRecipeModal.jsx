@@ -2,9 +2,10 @@ import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import TextField from 'material-ui/TextField';
 import Divider from 'material-ui/Divider';
 let Button = require('./Button.jsx');
+let AddRecipeForm = require('./AddRecipeForm.jsx');
+
 
 
 var AddRecipeModal = React.createClass({
@@ -20,8 +21,7 @@ var AddRecipeModal = React.createClass({
   },
 
   handleClose(e) {
-    console.log()
-    this.props.onClose();
+    this.props.onClose(this.state);
     this.setState({ open: false });
   },
   handleChange(e){
@@ -44,24 +44,7 @@ var AddRecipeModal = React.createClass({
         onClick={this.handleClose}
       />,
     ];
-    const AddRecipeForm = () => (
-      <div>
-        <TextField 
-        hintText="Recipe Name" 
-        name="recipeNameText" 
-        value={this.state.recipeNameText} 
-        onChange = {this.handleChange} 
-        floatingLabelText="Recipe Name" />
-        <Divider />
-        <TextField 
-        hintText="Ingredients" 
-        name="ingredientText" 
-        value={this.state.ingredientText}
-        onChange = {this.handleChange} 
-        floatingLabelText="Ingredients" />
-        <Divider />
-      </div>
-    );
+
     return (
       <div>
         <Button onClick={this.handleOpen} />
@@ -71,9 +54,12 @@ var AddRecipeModal = React.createClass({
           actions={actions}
           open={this.state.open}
           onRequestClose={this.handleClose}
-          key="234948737"
         >
-          <AddRecipeForm key="114948737"/>
+          <AddRecipeForm
+          onChange = {this.handleChange}
+          recipeName = {this.state.recipeName}
+          ingredients = {this.state.ingredients}
+          />
         </Dialog>
       </div>
     );

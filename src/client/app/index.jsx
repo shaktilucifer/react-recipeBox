@@ -16,8 +16,8 @@ class App extends React.Component {
     }
 
   }
-  addRecipe() {
-    console.log("clicked add");
+  addRecipe(value) {
+    console.log(value);
     console.log(this.state.recipes);
   }
 
@@ -37,7 +37,6 @@ class App extends React.Component {
         <MuiThemeProvider>
           <AddRecipeModal
            onClose ={this.addRecipe}
-           key="21393752783"
            />
         </MuiThemeProvider>
       </div>
