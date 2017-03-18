@@ -1,24 +1,25 @@
 import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import TextField from 'material-ui/TextField';
+import Divider from 'material-ui/Divider';
 let Button = require('./Button.jsx');
 
+
 var AddRecipeModal = React.createClass({
-    getInitialState(){
-return this.state = {
-    open: false,
-  };
-    },
+  getInitialState() {
+    return this.state = {
+      open: false,
+    };
+  },
   handleOpen() {
-    console.log("here");
-    this.setState({open: true});
+    this.setState({ open: true });
   },
 
-  handleClose(e){
-    this.setState({open: false});
-    this.props.onClose
+  handleClose(e) {
+    this.props.onClose();
+    this.setState({ open: false });
   },
 
   render() {
@@ -35,17 +36,25 @@ return this.state = {
         onClick={this.handleClose}
       />,
     ];
-    let isModalOpen = this.props.open;
+    const AddRecipeForm = () => (
+      <div>
+        <TextField hintText="Recipe Name" floatingLabelText="Recipe Name" />
+        <Divider />
+        <TextField hintText="Ingredients" floatingLabelText="Ingredients" />
+        <Divider />
+      </div>
+    );
     return (
       <div>
-      <Button onClick={this.handleOpen}/>
+        <Button onClick={this.handleOpen} />
         <Dialog
-          title="Dialog With Actions"
+          title="Add Recipes!"
           modal={false}
           actions={actions}
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
+          <AddRecipeForm />
         </Dialog>
       </div>
     );
