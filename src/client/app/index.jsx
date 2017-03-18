@@ -11,14 +11,21 @@ class App extends React.Component {
   constructor() {
     super();
     this.addRecipe = this.addRecipe.bind(this);
-    this.state ={
+    this.state = {
       recipes: recipeJson.recipes
     }
 
   }
   addRecipe(value) {
-    console.log(value);
-    console.log(this.state.recipes);
+    var currentRecipes = this.state.recipes;
+    var recipeObject = {};
+    recipeObject['recipeName'] = value.recipeNameText;
+    recipeObject['ingredients'] = [];
+    recipeObject['ingredients'].push(value.ingredientText);
+    currentRecipes.push(recipeObject);
+    this.setState({
+      recipes: currentRecipes
+    });
   }
 
   render() {
@@ -36,8 +43,8 @@ class App extends React.Component {
         </ul>
         <MuiThemeProvider>
           <AddRecipeModal
-           onClose ={this.addRecipe}
-           />
+            onClose={this.addRecipe}
+          />
         </MuiThemeProvider>
       </div>
     );

@@ -24,8 +24,8 @@ var AddRecipeModal = React.createClass({
     this.props.onClose(this.state);
     this.setState({ open: false });
   },
-  handleChange(e){
-    let stateObj ={};
+  handleChange(e) {
+    let stateObj = {};
     stateObj[e.target.name] = e.target.value;
     this.setState(stateObj);
   },
@@ -56,9 +56,9 @@ var AddRecipeModal = React.createClass({
           onRequestClose={this.handleClose}
         >
           <AddRecipeForm
-          onChange = {this.handleChange}
-          recipeName = {this.state.recipeName}
-          ingredients = {this.state.ingredients}
+            onChange={this.handleChange}
+            recipeName={this.state.recipeName}
+            ingredients={this.state.ingredients}
           />
         </Dialog>
       </div>

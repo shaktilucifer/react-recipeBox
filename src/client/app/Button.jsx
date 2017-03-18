@@ -8,8 +8,8 @@ var Button = React.createClass({
       <FloatingActionButton mini={true} onClick={this.props.onClick}>
         <ContentAdd />
       </FloatingActionButton>
-      
-      )
+
+    )
   }
 
 });
