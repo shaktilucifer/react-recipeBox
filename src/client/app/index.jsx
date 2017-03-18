@@ -16,7 +16,7 @@ class App extends React.Component {
     this.handleModalOpenClose = this.handleModalOpenClose.bind(this);
     let recipes = recipeJson.recipes;
     this.state ={
-      open: false
+      recipes: recipes
     }
 
   }
@@ -27,11 +27,12 @@ class App extends React.Component {
     let isModalOpen = this.state.open ? false : true;
     
         this.setState({open: isModalOpen});
+      
 
   }
   render() {
     console.log(this.state);
-    const recipeList = recipeJson.recipes.map((recipename) =>
+    const recipeList = this.state.recipes.map((recipename) =>
       <RecipeName
         recipeName={recipename.recipeName}
         onClick={this.showIngredients}
@@ -44,11 +45,13 @@ class App extends React.Component {
         <ul className="collapsible popout" data-collapsible="accordion">
           {recipeList}
         </ul>
-        <MuiThemeProvider>
+        {/*<MuiThemeProvider>
           <Button onClick={this.handleModalOpenClose}/>
-        </MuiThemeProvider>
+        </MuiThemeProvider>*/}
         <MuiThemeProvider>
-          <DialogExampleSimple open={this.state.open} />
+          <DialogExampleSimple
+           onClose ={this.addRecipe}
+           />
         </MuiThemeProvider>
 
       </div>

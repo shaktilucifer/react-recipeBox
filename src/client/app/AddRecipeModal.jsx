@@ -3,6 +3,7 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+let Button = require('./Button.jsx');
 
 var AddRecipeModal = React.createClass({
     getInitialState(){
@@ -10,12 +11,14 @@ return this.state = {
     open: false,
   };
     },
-     handleOpen() {
+  handleOpen() {
+    console.log("here");
     this.setState({open: true});
   },
 
-  handleClose(){
+  handleClose(e){
     this.setState({open: false});
+    this.props.onClose
   },
 
   render() {
@@ -35,14 +38,14 @@ return this.state = {
     let isModalOpen = this.props.open;
     return (
       <div>
+      <Button onClick={this.handleOpen}/>
         <Dialog
           title="Dialog With Actions"
           modal={false}
           actions={actions}
-          open={isModalOpen}
+          open={this.state.open}
           onRequestClose={this.handleClose}
         >
-          The actions in this window were passed in as an array of React objects.
         </Dialog>
       </div>
     );
