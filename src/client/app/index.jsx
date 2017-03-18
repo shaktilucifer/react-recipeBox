@@ -17,11 +17,11 @@ class App extends React.Component {
 
   }
   addRecipe(value) {
-    var currentRecipes = this.state.recipes;
-    var recipeObject = {};
+    let currentRecipes = this.state.recipes;
+    let recipeObject = {};
+    let ingredients = value.ingredientText.split(',');
     recipeObject['recipeName'] = value.recipeNameText;
-    recipeObject['ingredients'] = [];
-    recipeObject['ingredients'].push(value.ingredientText);
+    recipeObject['ingredients'] = ingredients;
     currentRecipes.push(recipeObject);
     this.setState({
       recipes: currentRecipes
@@ -34,7 +34,7 @@ class App extends React.Component {
         recipeName={recipename.recipeName}
         onClick={this.showIngredients}
         ingredients={recipename.ingredients}
-        key={recipename.id} />
+        />
     );
     return (
       <div className="container">
