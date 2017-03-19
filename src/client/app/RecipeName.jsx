@@ -17,7 +17,7 @@ var RecipeName = React.createClass({
         return (
             <li>
                 <div className="collapsible-header" onClick={this.showIngredients}>
-                    {this.props.recipeName}
+                    <b> {this.props.recipeName} </b>
                 </div>
                 <Ingredients
                     ingredients={this.props.ingredients}

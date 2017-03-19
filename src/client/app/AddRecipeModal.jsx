@@ -19,10 +19,12 @@ var AddRecipeModal = React.createClass({
   handleOpen() {
     this.setState({ open: true });
   },
-
-  handleClose(e) {
-    this.props.onClose(this.state);
+  handleClose() {
     this.setState({ open: false });
+  },
+  handleSave(e) {
+    this.props.onClose(this.state);
+    this.handleClose();
   },
   handleChange(e) {
     let stateObj = {};
@@ -41,7 +43,7 @@ var AddRecipeModal = React.createClass({
         label="Submit"
         primary={true}
         keyboardFocused={true}
-        onClick={this.handleClose}
+        onClick={this.handleSave}
       />,
     ];
 
@@ -55,11 +57,11 @@ var AddRecipeModal = React.createClass({
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
-          <AddRecipeForm
-            onChange={this.handleChange}
-            recipeName={this.state.recipeName}
-            ingredients={this.state.ingredients}
-          />
+        <AddRecipeForm
+          onChange={this.handleChange}
+          recipeName={this.state.recipeName}
+          ingredients={this.state.ingredients}
+        />
         </Dialog>
       </div>
     );

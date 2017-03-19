@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import AppBarHeader from './AppBar.jsx';
 
 let RecipeName = require('./RecipeName.jsx');
 let recipeJson = require('./defaultRecipes');
-let AddRecipeModal = require('./AddRecipeModal.jsx')
-
+let AddRecipeModal = require('./AddRecipeModal.jsx');
 
 class App extends React.Component {
   constructor() {
@@ -34,14 +34,23 @@ class App extends React.Component {
         recipeName={recipename.recipeName}
         onClick={this.showIngredients}
         ingredients={recipename.ingredients}
-        />
+      />
     );
     return (
       <div className="container">
-        <ul className="collapsible popout" data-collapsible="accordion">
-          {recipeList}
-        </ul>
+        <div style={{marginTop: "10%"}}>
+          <ul
+            style={{ margin: 0, padding: 0 }}
+            className="collapsible popout"
+            data-collapsible="accordion" >
+               <MuiThemeProvider>
+            <AppBarHeader />
+          </MuiThemeProvider>
+            {recipeList}
+          </ul>
+        </div>
         <MuiThemeProvider>
+
           <AddRecipeModal
             onClose={this.addRecipe}
           />
