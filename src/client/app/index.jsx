@@ -11,6 +11,8 @@ class App extends React.Component {
   constructor() {
     super();
     this.addRecipe = this.addRecipe.bind(this);
+    this.deleteRecipe = this.deleteRecipe.bind(this);
+
     this.state = {
       recipes: recipeJson.recipes
     }
@@ -27,6 +29,9 @@ class App extends React.Component {
       recipes: currentRecipes
     });
   }
+  deleteRecipe(e){
+    console.log("Deleted");
+  }
 
   render() {
     const recipeList = this.state.recipes.map((recipename) =>
@@ -35,6 +40,7 @@ class App extends React.Component {
         recipeName={recipename.recipeName}
         onClick={this.showIngredients}
         ingredients={recipename.ingredients}
+        onClick={this.deleteRecipe}
       />
                 </MuiThemeProvider>
 
