@@ -30,11 +30,14 @@ class App extends React.Component {
 
   render() {
     const recipeList = this.state.recipes.map((recipename) =>
+     <MuiThemeProvider>
       <RecipeName
         recipeName={recipename.recipeName}
         onClick={this.showIngredients}
         ingredients={recipename.ingredients}
       />
+                </MuiThemeProvider>
+
     );
     return (
       <div className="container">
