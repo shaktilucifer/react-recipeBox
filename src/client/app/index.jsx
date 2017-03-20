@@ -19,7 +19,6 @@ class App extends React.Component {
 
   }
   addRecipe(value) {
-    console.log("added");
     let currentRecipes = this.state.recipes;
     let recipeObject = {};
     let ingredients = value.ingredientText.split(',');
@@ -30,35 +29,33 @@ class App extends React.Component {
       recipes: currentRecipes
     });
   }
-  deleteRecipe(recipeName){
+  deleteRecipe(recipeName) {
     const recipes = this.state.recipes.filter(obj => obj.recipeName != recipeName);
-    this.setState({recipes: recipes});
-    console.log("Deleted");
-    
+    this.setState({ recipes: recipes });
   }
 
   render() {
     const recipeList = this.state.recipes.map((recipename) =>
-     <MuiThemeProvider>
-      <RecipeName
-        recipeName={recipename.recipeName}
-        onClick={this.showIngredients}
-        ingredients={recipename.ingredients}
-        onClick={this.deleteRecipe}
-      />
-                </MuiThemeProvider>
+      <MuiThemeProvider>
+        <RecipeName
+          recipeName={recipename.recipeName}
+          onClick={this.showIngredients}
+          ingredients={recipename.ingredients}
+          onClick={this.deleteRecipe}
+        />
+      </MuiThemeProvider>
 
     );
     return (
       <div className="container">
-        <div style={{marginTop: "10%"}}>
+        <div style={{ marginTop: "10%" }}>
           <ul
             style={{ margin: 0, padding: 0 }}
             className="collapsible popout"
             data-collapsible="accordion" >
-               <MuiThemeProvider>
-            <AppBarHeader />
-          </MuiThemeProvider>
+            <MuiThemeProvider>
+              <AppBarHeader />
+            </MuiThemeProvider>
             {recipeList}
           </ul>
         </div>

@@ -1,7 +1,6 @@
 import React from 'react';
 import FontIcon from 'material-ui/FontIcon';
 import IconButton from 'material-ui/IconButton';
-import { red500, yellow500, blue500 } from 'material-ui/styles/colors';
 
 let Ingredients = require('./Ingredients.jsx');
 
