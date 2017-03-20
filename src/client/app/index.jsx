@@ -19,6 +19,7 @@ class App extends React.Component {
 
   }
   addRecipe(value) {
+    console.log("added");
     let currentRecipes = this.state.recipes;
     let recipeObject = {};
     let ingredients = value.ingredientText.split(',');
@@ -29,8 +30,11 @@ class App extends React.Component {
       recipes: currentRecipes
     });
   }
-  deleteRecipe(e){
+  deleteRecipe(recipeName){
+    const recipes = this.state.recipes.filter(obj => obj.recipeName != recipeName);
+    this.setState({recipes: recipes});
     console.log("Deleted");
+    
   }
 
   render() {
