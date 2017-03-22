@@ -21,8 +21,8 @@ var RecipeName = React.createClass({
             <li>
                 <div className="collapsible-header" onClick={this.showIngredients}>
                     <b> {this.props.recipeName} </b>
-                    <div style={{ float: 'right'}}>
-                        <FontIcon className="material-icons" onClick={() => {this.props.onClick(this.props.recipeName)}}>delete</FontIcon>
+                    <div style={{ float: 'right' }}>
+                        <FontIcon className="material-icons" onClick={() => { this.props.onClick(this.props.recipeName) }}>delete</FontIcon>
                     </div>
                 </div>
                 <Ingredients
