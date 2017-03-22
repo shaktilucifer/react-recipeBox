@@ -1,6 +1,7 @@
 # React-RecipeBox
 
 React Recipe Box is a webapp that uses react with JSX to store recipes and ingredients.
+You can add, delete,edit recipes. 
 
 To Run the app :
 ```bash
