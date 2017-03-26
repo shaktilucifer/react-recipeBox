@@ -20,6 +20,7 @@ var AddRecipeModal = React.createClass({
     this.setState({ open: true });
   },
   handleClose() {
+    this.props.isEditModal = false;
     this.setState({ open: false });
   },
   handleSave(e) {
@@ -27,6 +28,7 @@ var AddRecipeModal = React.createClass({
     this.handleClose();
   },
   handleChange(e) {
+    console.log(this.props.isEditModal);
     let stateObj = {};
     stateObj[e.target.name] = e.target.value;
     this.setState(stateObj);
@@ -59,8 +61,8 @@ var AddRecipeModal = React.createClass({
         >
           <AddRecipeForm
           onChange={this.handleChange}
-          recipeName={!this.props.isEditModal ? this.state.recipeName : this.props.recipeToBeEdited}
-          ingredients={this.state.ingredients}
+          recipeName={!this.props.isEditModal ? this.state.recipeName : this.props.recipeToBeEdited[0].recipeName}
+          ingredients={!this.props.isEditModal ? this.state.ingredients : this.props.recipeToBeEdited[0].ingredients}
         />
        
         </Dialog>
