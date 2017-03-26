@@ -42,7 +42,7 @@ class App extends React.Component {
     });
   }
   filterRecipeByName(recipeName){
-    return this.state.recipes.filter(obj => obj.recipeName = recipeName);
+    return this.state.recipes.filter(obj => obj.recipeName == recipeName);
 
   }
   filterOutRecipeByName(recipeName){

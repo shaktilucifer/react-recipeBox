@@ -3,6 +3,7 @@ import TextField from 'material-ui/TextField';
 
 var AddRecipeForm = React.createClass({
   render() {
+    console.log(this.props.recipeName);
     return (
       <div>
         <TextField
