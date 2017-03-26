@@ -14,7 +14,7 @@ var AddRecipeModal = React.createClass({
       open: false,
       recipeNameText: '',
       ingredientText: ''
-    };
+        };
   },
   handleOpen() {
     this.setState({ open: true });
@@ -54,14 +54,15 @@ var AddRecipeModal = React.createClass({
           title="Add Recipes!"
           modal={false}
           actions={actions}
-          open={this.state.open}
+          open={this.state.open || this.props.isEditModal}
           onRequestClose={this.handleClose}
         >
-        <AddRecipeForm
+          <AddRecipeForm
           onChange={this.handleChange}
-          recipeName={this.state.recipeName}
+          recipeName={!this.props.isEditModal ? this.state.recipeName : this.props.recipeToBeEdited}
           ingredients={this.state.ingredients}
         />
+       
         </Dialog>
       </div>
     );

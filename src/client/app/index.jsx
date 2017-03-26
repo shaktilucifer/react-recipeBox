@@ -12,7 +12,7 @@ class App extends React.Component {
     super();
     this.addRecipe = this.addRecipe.bind(this);
     this.deleteRecipe = this.deleteRecipe.bind(this);
-
+    this.editRecipe = this.editRecipe.bind(this);
     this.state = {
       recipes: recipeJson.recipes
     }
@@ -26,12 +26,27 @@ class App extends React.Component {
     recipeObject['ingredients'] = ingredients;
     currentRecipes.push(recipeObject);
     this.setState({
-      recipes: currentRecipes
+      recipes: currentRecipes,
+      isEditModal: false
     });
   }
   deleteRecipe(recipeName) {
-    const recipes = this.state.recipes.filter(obj => obj.recipeName != recipeName);
-    this.setState({ recipes: recipes });
+    this.setState({ recipes: this.filterOutRecipeByName(recipeName) });
+  }
+  editRecipe(recipeName){
+    console.log(recipeName);
+    console.log(this.filterRecipeByName(recipeName));
+    this.setState({
+      isEditModal:true,
+      recipeToBeEdited: this.filterRecipeByName(recipeName)
+    });
+  }
+  filterRecipeByName(recipeName){
+    return this.state.recipes.filter(obj => obj.recipeName = recipeName);
+
+  }
+  filterOutRecipeByName(recipeName){
+    return this.state.recipes.filter(obj => obj.recipeName != recipeName);
   }
 
   render() {
@@ -42,6 +57,7 @@ class App extends React.Component {
           onClick={this.showIngredients}
           ingredients={recipename.ingredients}
           onClick={this.deleteRecipe}
+          onEdit ={this.editRecipe}
         />
       </MuiThemeProvider>
 
@@ -63,6 +79,8 @@ class App extends React.Component {
 
           <AddRecipeModal
             onClose={this.addRecipe}
+            isEditModal={this.state.isEditModal}
+            recipeToBeEdited={this.state.recipeToBeEdited}
           />
         </MuiThemeProvider>
       </div>
