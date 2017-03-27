@@ -27,13 +27,19 @@ var AddRecipeModal = React.createClass({
     this.handleClose();
   },
   handleChange(e) {
+  
+    if (this.props.isEditModal) {
+      if (e.target.name == "recipeNameText") {
+        this.props.recipeToBeEdited[0].recipeName = e.target.value;
+      }else{
+        this.props.recipeToBeEdited[0].ingredients = e.target.value;
+      }
+    };
     let stateObj = {};
     stateObj[e.target.name] = e.target.value;
     this.setState(stateObj);
   },
   componentWillReceiveProps(nextProps) {
-    console.log("nextProps");
-    console.log(nextProps);
     this.setState({
       recipes: nextProps.recipeToBeEdited[0]
     });
