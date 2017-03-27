@@ -6,15 +6,14 @@ import Divider from 'material-ui/Divider';
 let Button = require('./Button.jsx');
 let AddRecipeForm = require('./AddRecipeForm.jsx');
 
-
-
 var AddRecipeModal = React.createClass({
   getInitialState() {
-    return this.state = {
+    this.state = {
       open: false,
       recipeNameText: '',
       ingredientText: ''
-        };
+    };
+    return this.state;
   },
   handleOpen() {
     this.setState({ open: true });
@@ -28,10 +27,16 @@ var AddRecipeModal = React.createClass({
     this.handleClose();
   },
   handleChange(e) {
-    console.log(this.props.isEditModal);
     let stateObj = {};
     stateObj[e.target.name] = e.target.value;
     this.setState(stateObj);
+  },
+  componentWillReceiveProps(nextProps) {
+    console.log("nextProps");
+    console.log(nextProps);
+    this.setState({
+      recipes: nextProps.recipeToBeEdited[0]
+    });
   },
 
   render() {
@@ -60,11 +65,10 @@ var AddRecipeModal = React.createClass({
           onRequestClose={this.handleClose}
         >
           <AddRecipeForm
-          onChange={this.handleChange}
-          recipeName={!this.props.isEditModal ? this.state.recipeName : this.props.recipeToBeEdited[0].recipeName}
-          ingredients={!this.props.isEditModal ? this.state.ingredients : this.props.recipeToBeEdited[0].ingredients}
-        />
-       
+            onChange={this.handleChange}
+            recipeName={!this.props.isEditModal ? this.state.recipeName : this.props.recipeToBeEdited[0].recipeName}
+            ingredients={!this.props.isEditModal ? this.state.ingredients : this.props.recipeToBeEdited[0].ingredients}
+          />
         </Dialog>
       </div>
     );
