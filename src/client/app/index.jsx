@@ -18,13 +18,25 @@ class App extends React.Component {
     }
 
   }
-  addRecipe(value) {
+  addRecipe(value, isEdit) {
     let currentRecipes = this.state.recipes;
     let recipeObject = {};
     let ingredients = value.ingredientText.split(',');
-    recipeObject['recipeName'] = value.recipeNameText;
-    recipeObject['ingredients'] = ingredients;
-    currentRecipes.push(recipeObject);
+    if (isEdit) {
+      console.log("edit");
+      console.log(currentRecipes);
+      console.log(ingredients);
+      console.log(value.recipeNameText);
+      let index = this.getRecipeIndexByName(value.recipeNameText);
+      console.log(index);
+      console.log(currentRecipes[index]);
+      currentRecipes[index].recipeName = value.recipeNameText;
+      currentRecipes[index].ingredients = ingredients;
+    } else {
+      recipeObject['recipeName'] = value.recipeNameText;
+      recipeObject['ingredients'] = ingredients;
+      currentRecipes.push(recipeObject);
+    }
     this.setState({
       recipes: currentRecipes,
       isEditModal: false
@@ -33,22 +45,22 @@ class App extends React.Component {
   deleteRecipe(recipeName) {
     this.setState({ recipes: this.filterOutRecipeByName(recipeName) });
   }
-  editRecipe(recipeName){
-    console.log(recipeName);
-    console.log(this.filterRecipeByName(recipeName));
+  editRecipe(recipeName) {
     this.setState({
-      isEditModal:true,
+      isEditModal: true,
       recipeToBeEdited: this.filterRecipeByName(recipeName)
     });
   }
-  filterRecipeByName(recipeName){
+  filterRecipeByName(recipeName) {
     return this.state.recipes.filter(obj => obj.recipeName == recipeName);
 
   }
-  filterOutRecipeByName(recipeName){
+  filterOutRecipeByName(recipeName) {
     return this.state.recipes.filter(obj => obj.recipeName != recipeName);
   }
-
+  getRecipeIndexByName(recipeName){
+   return this.state.recipes.findIndex((obj => obj.recipeName == recipeName));
+  }
   render() {
     const recipeList = this.state.recipes.map((recipename) =>
       <MuiThemeProvider>
@@ -57,11 +69,12 @@ class App extends React.Component {
           onClick={this.showIngredients}
           ingredients={recipename.ingredients}
           onClick={this.deleteRecipe}
-          onEdit ={this.editRecipe}
+          onEdit={this.editRecipe}
         />
       </MuiThemeProvider>
 
     );
+    console.log("rendering");
     return (
       <div className="container">
         <div style={{ marginTop: "10%" }}>
