@@ -21,8 +21,10 @@ class App extends React.Component {
   addRecipe(value, isEdit) {
     let currentRecipes = this.state.recipes;
     let recipeObject = {};
-    console.log(value);
-    let ingredients = value.ingredients.split(',');
+    let ingredients = value.ingredients;
+    if(typeof ingredients === 'string'){
+        ingredients = ingredients.split(',');
+    }
     if (isEdit) {
       let index = this.getRecipeIndexByName(value.recipeName);
       currentRecipes[index].recipeName = value.recipeName;
@@ -67,9 +69,7 @@ class App extends React.Component {
           onEdit={this.editRecipe}
         />
       </MuiThemeProvider>
-
     );
-    console.log("rendering");
     return (
       <div className="container">
         <div style={{ marginTop: "10%" }}>

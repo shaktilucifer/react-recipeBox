@@ -20,21 +20,26 @@ var AddRecipeModal = React.createClass({
   },
   handleClose() {
     this.props.isEditModal = false;
-    this.setState({ open: false });
+    this.setState({
+      open: false,
+      recipeName: '',
+      ingredients: ''
+    });
   },
   handleSave(e) {
     let recipe = this.state;
-    if(this.props.isEditModal){
+    if (this.props.isEditModal) {
       recipe = this.props.recipeToBeEdited[0];
+      console.log(recipe);
     };
-    this.props.onClose(recipe,this.props.isEditModal);
+    this.props.onClose(recipe, this.props.isEditModal);
     this.handleClose();
   },
   handleChange(e) {
     if (this.props.isEditModal) {
       if (e.target.name == "recipeName") {
         this.props.recipeToBeEdited[0].recipeName = e.target.value;
-      }else{
+      } else {
         this.props.recipeToBeEdited[0].ingredients = e.target.value;
       }
     };
@@ -44,6 +49,8 @@ var AddRecipeModal = React.createClass({
   },
 
   render() {
+    console.log(this.props.isEditModal);
+    console.log(this.state.ingredients);
     const actions = [
       <FlatButton
         label="Cancel"
