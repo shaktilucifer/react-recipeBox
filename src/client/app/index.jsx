@@ -22,8 +22,8 @@ class App extends React.Component {
     let currentRecipes = this.state.recipes;
     let recipeObject = {};
     let ingredients = value.ingredients;
-    if(typeof ingredients === 'string'){
-        ingredients = ingredients.split(',');
+    if (typeof ingredients === 'string') {
+      ingredients = ingredients.split(',');
     }
     if (isEdit) {
       let index = this.getRecipeIndexByName(value.recipeName);
@@ -55,8 +55,8 @@ class App extends React.Component {
   filterOutRecipeByName(recipeName) {
     return this.state.recipes.filter(obj => obj.recipeName != recipeName);
   }
-  getRecipeIndexByName(recipeName){
-   return this.state.recipes.findIndex((obj => obj.recipeName == recipeName));
+  getRecipeIndexByName(recipeName) {
+    return this.state.recipes.findIndex((obj => obj.recipeName == recipeName));
   }
   render() {
     const recipeList = this.state.recipes.map((recipename) =>
