@@ -6,14 +6,14 @@ var AddRecipeForm = React.createClass({
     return (
       <div>
         <TextField
-          name="recipeNameText"
+          name="recipeName"
           value={this.props.recipeName}
           onChange={this.props.onChange}
           floatingLabelFixed={true}
           floatingLabelText="Recipe Name" />
           <br/>
         <TextField
-          name="ingredientText"
+          name="ingredients"
           value={this.props.ingredients}
           onChange={this.props.onChange}
           floatingLabelFixed={true}

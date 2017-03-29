@@ -21,19 +21,14 @@ class App extends React.Component {
   addRecipe(value, isEdit) {
     let currentRecipes = this.state.recipes;
     let recipeObject = {};
-    let ingredients = value.ingredientText.split(',');
+    console.log(value);
+    let ingredients = value.ingredients.split(',');
     if (isEdit) {
-      console.log("edit");
-      console.log(currentRecipes);
-      console.log(ingredients);
-      console.log(value.recipeNameText);
-      let index = this.getRecipeIndexByName(value.recipeNameText);
-      console.log(index);
-      console.log(currentRecipes[index]);
-      currentRecipes[index].recipeName = value.recipeNameText;
+      let index = this.getRecipeIndexByName(value.recipeName);
+      currentRecipes[index].recipeName = value.recipeName;
       currentRecipes[index].ingredients = ingredients;
     } else {
-      recipeObject['recipeName'] = value.recipeNameText;
+      recipeObject['recipeName'] = value.recipeName;
       recipeObject['ingredients'] = ingredients;
       currentRecipes.push(recipeObject);
     }

@@ -10,8 +10,8 @@ var AddRecipeModal = React.createClass({
   getInitialState() {
     this.state = {
       open: false,
-      recipeNameText: '',
-      ingredientText: ''
+      recipeName: '',
+      ingredients: ''
     };
     return this.state;
   },
@@ -23,27 +23,24 @@ var AddRecipeModal = React.createClass({
     this.setState({ open: false });
   },
   handleSave(e) {
-    this.props.onClose(this.state,this.props.isEditModal);
+    let recipe = this.state;
+    if(this.props.isEditModal){
+      recipe = this.props.recipeToBeEdited[0];
+    };
+    this.props.onClose(recipe,this.props.isEditModal);
     this.handleClose();
   },
   handleChange(e) {
     if (this.props.isEditModal) {
-      if (e.target.name == "recipeNameText") {
+      if (e.target.name == "recipeName") {
         this.props.recipeToBeEdited[0].recipeName = e.target.value;
       }else{
-        console.log(e.target.value);
         this.props.recipeToBeEdited[0].ingredients = e.target.value;
       }
     };
     let stateObj = {};
     stateObj[e.target.name] = e.target.value;
-    console.log(stateObj);
     this.setState(stateObj);
-  },
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      recipes: nextProps.recipeToBeEdited[0]
-    });
   },
 
   render() {
