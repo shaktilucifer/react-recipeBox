@@ -13,10 +13,16 @@ class App extends React.Component {
     this.addRecipe = this.addRecipe.bind(this);
     this.deleteRecipe = this.deleteRecipe.bind(this);
     this.editRecipe = this.editRecipe.bind(this);
-    this.state = {
-      recipes: recipeJson.recipes
+    let localState = localStorage.getItem("state");
+    if (localState != undefined) {
+      this.state = {
+        recipes: JSON.parse(localState).recipes
+      }
+    } else {
+      this.state = {
+        recipes: recipeJson.recipes
+      }
     }
-
   }
   addRecipe(value, isEdit) {
     let currentRecipes = this.state.recipes;
@@ -58,7 +64,12 @@ class App extends React.Component {
   getRecipeIndexByName(recipeName) {
     return this.state.recipes.findIndex((obj => obj.recipeName == recipeName));
   }
+  setLocalStorage() {
+    localStorage.setItem("state", JSON.stringify(this.state));
+  }
+
   render() {
+    this.setLocalStorage();
     const recipeList = this.state.recipes.map((recipename) =>
       <MuiThemeProvider>
         <RecipeName
