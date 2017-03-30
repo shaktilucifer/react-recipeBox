@@ -30,7 +30,6 @@ var AddRecipeModal = React.createClass({
     let recipe = this.state;
     if (this.props.isEditModal) {
       recipe = this.props.recipeToBeEdited[0];
-      console.log(recipe);
     };
     this.props.onClose(recipe, this.props.isEditModal);
     this.handleClose();
@@ -49,8 +48,6 @@ var AddRecipeModal = React.createClass({
   },
 
   render() {
-    console.log(this.props.isEditModal);
-    console.log(this.state.ingredients);
     const actions = [
       <FlatButton
         label="Cancel"
