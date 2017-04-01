@@ -10,7 +10,7 @@ var AppBarExampleIcon = React.createClass({
           style={{ backgroundColor: 'grey', color: 'white' }}
           className="collapsible-header">
           <b>  RECIPE BOOK </b>
-
+            <Button onClick={this.props.onClick}/>
         </div>
       </li>
     )
