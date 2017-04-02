@@ -63,7 +63,7 @@ var AddRecipeModal = React.createClass({
     ];
 
     return (
-      <div>
+      <span>
         <Button onClick={this.handleOpen} />
         <Dialog
           title="Add Recipes!"
@@ -78,7 +78,7 @@ var AddRecipeModal = React.createClass({
             ingredients={!this.props.isEditModal ? this.state.ingredients : this.props.recipeToBeEdited[0].ingredients}
           />
         </Dialog>
-      </div>
+      </span>
     );
   }
 });
