@@ -4,7 +4,7 @@ import FlatButton from 'material-ui/FlatButton';
 
 import ContentAdd from 'material-ui/svg-icons/content/add';
 const style = {
-    alignSelf: 'flex-end',  
+    textAlign: 'left',  
 };
 var Button = React.createClass({
   render() {
