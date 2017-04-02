@@ -6,9 +6,10 @@ let Ingredients = React.createClass({
         let showHideIngredients = this.props.showIngredient ? "" : "hide";
         return (
             <div style={{ padding: 20 }} className={showHideIngredients} >
-                {this.props.ingredients.map(function (title) {
-                    return <li key={title}>{title}</li>;
-                })}
+            {
+                this.props.ingredients.map(function (title) {
+                return <li key={title}>{title}</li>;
+            })}
             </div>
         );
     }

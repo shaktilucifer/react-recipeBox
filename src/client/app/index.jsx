@@ -67,11 +67,6 @@ class App extends React.Component {
   setLocalStorage() {
     localStorage.setItem("state", JSON.stringify(this.state));
   }
-  openAddModal(){
-    this.setState({
-      open:true
-    })
-  }
 
   render() {
     this.setLocalStorage();
@@ -89,21 +84,16 @@ class App extends React.Component {
     return (
       <div className="container">
         <div style={{ marginTop: "10%" }}>
-             <MuiThemeProvider>
-          <AddRecipeModal
-            onClose={this.addRecipe}
-            isEditModal={this.state.isEditModal}
-            open={this.state.open}
-            recipeToBeEdited={this.state.recipeToBeEdited}
-          />
-        </MuiThemeProvider>
           <ul
             style={{ margin: 0, padding: 0 }}
             className="collapsible popout"
             data-collapsible="accordion" >
             <MuiThemeProvider>
-              <AppBarHeader 
-                onClick={this.openAddModal}
+              <AppBarHeader
+                onClose={this.addRecipe}
+                isEditModal={this.state.isEditModal}
+                open={this.state.open}
+                recipeToBeEdited={this.state.recipeToBeEdited}
               />
             </MuiThemeProvider>
             {recipeList}
