@@ -18,4 +18,4 @@ npm run build
 npm run dev 
 ```
 
-The app should be served at `localhost:8080`
+The app will run at `localhost:8080`
